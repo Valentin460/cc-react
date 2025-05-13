@@ -36,15 +36,17 @@ export default function PokemonDetail({ id, onBack }: { id: string, onBack: () =
             </div>
             <div className="mb-4">
                 <strong>Stats :</strong>
-                <ul className="list-disc list-inside">
-                    {Array.isArray(pokemon.stats) ? (
-                        pokemon.stats.map((stat: any, idx: number) => (
-                            <li key={stat.name + idx}>{stat.name}: {stat.value}</li>
-                        ))
-                    ) : (
-                        <li>Aucune statistique disponible</li>
-                    )}
-                </ul>
+                {pokemon.stats ? (
+                    <ul className="list-disc list-inside">
+                        <li>Attaque : {pokemon.stats.attack}</li>
+                        <li>Défense : {pokemon.stats.defense}</li>
+                        <li>Sp. Attaque : {pokemon.stats.special_attack}</li>
+                        <li>Sp. Défense : {pokemon.stats.special_defense}</li>
+                        <li>Vitesse : {pokemon.stats.speed}</li>
+                    </ul>
+                ) : (
+                    <p>Aucune statistique disponible</p>
+                )}
             </div>
             <div>
                 <strong>Évolutions :</strong>
